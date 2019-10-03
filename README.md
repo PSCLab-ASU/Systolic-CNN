@@ -1,1 +1,1 @@
-# ParallelCNN
+# Systolic Array CNN
