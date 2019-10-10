@@ -364,18 +364,18 @@ pool1_2_res[conv_layers-2] = 1;
 
 //// reorder input //////////////
 Mat image[num_image], image1[num_image], image2, image3;
-image[0] = imread("/home/user/adua5/alexnet_check/conv_exp/alexnet_final_deal/conv/conv/host/src/park_bench.jpg");
-image[1] = imread("/home/user/adua5/alexnet_check/conv_exp/alexnet_final_deal/conv/conv/host/src/flower.jpg");
-image[2] = imread("/home/user/adua5/alexnet_check/conv_exp/alexnet_final_deal/conv/conv/host/src/pizza.jpg");
-image[3] = imread("/home/user/adua5/alexnet_check/conv_exp/alexnet_final_deal/conv/conv/host/src/violin.jpg");
-image[4] = imread("/home/user/adua5/alexnet_check/conv_exp/alexnet_final_deal/conv/conv/host/src/frog.jpg");
-image[5] = imread("/home/user/adua5/alexnet_check/conv_exp/alexnet_final_deal/conv/conv/host/src/car.jpg");
-image[6] = imread("/home/user/adua5/alexnet_check/conv_exp/alexnet_final_deal/conv/conv/host/src/sumglass.jpg");
-image[7] = imread("/home/user/adua5/alexnet_check/conv_exp/alexnet_final_deal/conv/conv/host/src/terrier.jpg");
-image[8] = imread("/home/user/adua5/alexnet_check/conv_exp/alexnet_final_deal/conv/conv/host/src/snake.jpg");
-image[9] = imread("/home/user/adua5/alexnet_check/conv_exp/alexnet_final_deal/conv/conv/host/src/matchstick.jpg");
-image[10] = imread("/home/user/adua5/alexnet_check/conv_exp/alexnet_final_deal/conv/conv/host/src/espresso.jpg");
-image[11] = imread("/home/user/adua5/alexnet_check/conv_exp/alexnet_final_deal/conv/conv/host/src/mouse.jpg");
+image[0] = imread("image_location/park_bench.jpg");
+image[1] = imread("image_location/flower.jpg");
+image[2] = imread("image_location/pizza.jpg");
+image[3] = imread("image_location/violin.jpg");
+image[4] = imread("image_location/frog.jpg");
+image[5] = imread("image_location/car.jpg");
+image[6] = imread("image_location/sumglass.jpg");
+image[7] = imread("image_location/terrier.jpg");
+image[8] = imread("image_location/snake.jpg");
+image[9] = imread("image_location/matchstick.jpg");
+image[10] = imread("image_locationespresso.jpg");
+image[11] = imread("image_location/mouse.jpg");
 if(image[0].empty() || image[1].empty() || image[2].empty() || image[3].empty() || image[4].empty(), image[5].empty())
 {
   printf(" error in loading image ");
