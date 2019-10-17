@@ -1,4 +1,5 @@
 # Systolic Array CNN
+Pre-trained weight used for alexnet_weights can be downloaded from https://www.dropbox.com/s/mof7vjoero1kprb/alexnet_weights.tar?dl=0
 
 Kernel Design parameters 
 1. Device code can be found in /conv/conv/device/folder
