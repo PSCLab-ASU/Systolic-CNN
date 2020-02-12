@@ -40,3 +40,25 @@ e. Window_check : This parameter is used to enable support for the grouped convo
          window_check = input_channel_dimension/group_parameter
 
 Memrd kernel only send the data either to first convolution kernel or to the max_pooling kernel. As for convolution, we adopted 1-d Systolic array architecture, there is chain of channels which send convolution from one convolution kernel to next. This chain starts from the memrd kernel. 
+
+1.1.4 Mask_read kernel features and parameters
+Mask_read kernel is used to transfer the weights from the memory banks and send out the processing element to perform convolution. For convolution, number of weights required per cycle is given by the following equation:
+               number_of_weights = vec_fac * pe_num
+As mentioned earlier, vec_fac for our design is fixed to 16.  Convolution is more computationally expensive operation, it is not limited by the available memory bandwidth. However as same kernel is used for the Fully connected layer, which is memory intensive operation,  number of weights read from the memory is kept limited to vec_fac * pe_num / 4.  But the weights which are stored for FC are quantized and 4 weights are concatenated with each other from the host side. So, for example when 4 set pf weights are read from the memory by the device code, it can be converted to 16 different set of weight as shown in the code from 459-481. Now this different 16 set of weight can be transferred to 16 different PE. This quantization process is only used for Alexnet CNN, to mitigate the memory bandwidth limitation. But for resnet-50 and other bigger CNN, we have avoided using quantization process but still it can be used for bigger CNNs. 
+To differentiate between FC and convolution layer , maskHeight is fixed to 1 for FC as has been done in memrd kernel. Other parameter which enables the quantizatiton logic is FC, which needs to be set to 1 for convolution and FC, however for quantized FC it needs to be set to 0. 
+Other parameters used in mask_read kernel such as input_height, window, window2, maskwidth, kernel_width has similar defination as memrd kernels.
+
+1.1.5 Convolution kernel features and parameters
+Convolution kernels are used to perform the MAC operation on the data received from the memrd and mask_read kernel and send out the final result to mem_write kernel. Each of the convolution kernel is autorun kernel, thus they need to be instantiated from the host side, and is replicated pe_num times using num_compute_unit feature of OpenCL which generates 16 processing elements (PEs) of convolution kernel. As, our design using the concept of 1-d systolic array each PE sends out the input feature map to the adjacent one PE. However each PE receives different set of weights. Each PE also uses adder tree kind of structure to accumulate the final convolution result and send to mem_write kernel which can be seen from 684-688 lines of the code.  PE receives each paramter that is requires to perform convolution or FC is send via memory channel from memread kernel. So defination of the parameters such as input_height, kernel_width, mask_width, mask_height remains the same as defined in the memread kernel.
+
+
+1.1.6 Memwrite kernel features and parameters
+Memwrite kernel receives final convolution/FC results from the PE. Total size of the results received by the memwrite kernel is given by the following equation :
+              total_size_results = pe_num * reuse_fac * data_bit_size.
+ Since this collection from different PEs results in generation of MUX, to reduce the size of the MUX ( so as to reduce the output MUX), input data in Memread kernel per cycle is read along the channel dimension of the input feature map ( more information is available in the thesis). Bias addition and Sum layer( EltWise) is done in this kernel. Bias4 memory buffer is used for the sum layer and bias buffer is used for Bias addition to the convolution result. 
+ Other paramters used in Memwrite kernels are used to determine the location where the output feature maps are stored in memory to be used by the following layers. Those parameters are defines below
+        a. outputWidth = which determines the output dimension of the output feature maps.
+        b. pad = which is used if the next layer requires padding of the feature maps.
+        c. stride_write : as from each PE reuse_fac number of results are generated, but because of the stride there is a possibility
+                          that these results cannot be used, this parameter is used to determine, of reuse_fac number of output, how                               many can be actually written into the memory. It is equal to the stride of the given convolution layer.
+        
