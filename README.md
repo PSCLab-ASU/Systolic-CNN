@@ -5,19 +5,13 @@ Our work presents a generic OpenCL-defined CNN accelerator architecture optimize
 The performance of Alexnet, Resnet-50 has been measured by the proposed CNN kernel on Intel Arria 10 GX1150 FPGA. 
 
 # How to use
+To use the data first pre-trained weights are need to be downloaded from the 
 Pre-trained weight used for alexnet_weights can be downloaded from https://www.dropbox.com/s/usi9bhlvb9cqt9n/alexnet_weights.tar?dl=0
 
 Kernel Design parameters 
-1. Device code can be found in /conv/conv/device/folder
-2. Two parameters that can be used to scale the design are : pe_num and ll_reuse.
-3. Pe_num paramters increases the size of weight buffer.
-4. ll_reuse increases the size of input shift register.
-5. Convolution is divided into three kernels namely memrd, mask_read, conv(autorun kernel) and memwrite
-6. Other layers added to the design is Local response normalization, pooling-average and max, eltwise and relu.
-7. Kernel parameters does not change the size of other layers. 
+1. Device code can be found here at the [device folder](Systolic-CNN/conv/conv/conv/device/)
+
 
 Host Design paramters
-1. From Host side various parameters are send to different kernel for given operations
-2. Parameters send to memrd kernel are input feature map, input feature map dimensions( all three dimensions), window paramters window and window2 along x, y axis respectively, pool parameters to determine if layer is pooling and which pooling -average or max and stride parameters stride_conv, stride_conv1 along x, y axis respectively.
-3. 
+
 
