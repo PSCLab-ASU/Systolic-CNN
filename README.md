@@ -5,7 +5,7 @@ Our work presents a generic OpenCL-defined CNN accelerator architecture optimize
 The performance of Alexnet, Resnet-50 has been measured by the proposed CNN kernel on Intel Arria 10 GX1150 FPGA. 
 
 # How to use
-To use the data first pre-trained weights are need to be downloaded from the 
+To use the data first pre-trained weights are need to be downloaded to the local directory. 
 Pre-trained weight used for alexnet_weights can be downloaded from https://www.dropbox.com/s/usi9bhlvb9cqt9n/alexnet_weights.tar?dl=0
 
 Kernel Design parameters 
