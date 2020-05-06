@@ -9,7 +9,7 @@ To use the data first pre-trained weights are need to be downloaded from the
 Pre-trained weight used for alexnet_weights can be downloaded from https://www.dropbox.com/s/usi9bhlvb9cqt9n/alexnet_weights.tar?dl=0
 
 Kernel Design parameters 
-1. Device code can be found here at the [device folder](Systolic-CNN/conv/conv/conv/device/)
+1. Device code can be found here at the [device folder](conv/conv/conv/device/)
 
 
 Host Design paramters
