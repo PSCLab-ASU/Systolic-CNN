@@ -1,6 +1,6 @@
 Systolic-CNN supports multiple CNN layers operations, namely, convolution, LRN, average and max pooling, RELU, and ETLWISE. 
 
-#  Device kernel for convolution
+#  Convolution kernels
 The convolution operation is divided into three kernels with three single-threaded kernels (memrd, mask_read, and memwrite) to read/write the data from/to memory and an autorun convolution kernel that performs the convolution. As the name suggests, memrd is used to read the input feature map, mask_read is used to read the weights, and memwrite is used to write the final results to memory.  
 
 # Architectural parameters of device kernel
