@@ -11,9 +11,9 @@ To run the Alexnet and Resnet-50 using Systolic-CNN on a given FPGA, layer-wise 
 
 # Command to compile the device kernel
 1. The command for compiling the [device kernel](https://github.com/PSCLab-ASU/Systolic-CNN/tree/master/conv/conv/conv/device) in Intel FPGA SDK for OpenCL is "aoc -v -g -I $INTELFPGAOCLSDKROOT/include/kernel_headers/ gen_conv.cl".
-3. This should generate a binary file in .aocx, .aoco, or .aocr extension. All these files need to be copied to the bin folder to run the Systolic-CNN for different CNN models
+2. This should generate a binary file in .aocx, .aoco, or .aocr extension. All these files need to be copied to the [bin folder](conv/conv/conv/bin) to run the Systolic-CNN for different CNN models
 
 # Command to compile the host kernel
-[Host code](https://github.com/PSCLab-ASU/Systolic-CNN/tree/master/conv/conv/conv/host/src) is specific to the given CNN model and is written in C++. We have provided support for the Alexnet and Resnet-50 model with conv_alexnet.cpp and conv_resnet.cpp file inside the host folder. To avoid the conflict of generating multiple or wrong executable files, it is recommended to have only one C++ file inside the folder and to either remove the other C++ filer or copy to a backup folder. Following steps are required to generate the executable file
-1. [Makefile](https://github.com/PSCLab-ASU/Systolic-CNN/tree/master/conv/conv/conv) is used to generate the executable file at the bin location.
+1. The [Makefile](conv/conv/conv/Makefile) is used to generate the executable file at the bin location.
 2. To generate the executable file, use " make clean; make". This will generate the executable file specific to the target CNN model.
+- The [host kernel](conv/conv/conv/host/src) is specific to a given CNN model and is written in C++. We have provided examples for running the Alexnet and Resnet-50 models (conv_alexnet.cpp and conv_resnet.cpp). To avoid the conflict of generating multiple or wrong executable files, it is recommended to have only one C++ file inside the folder and to either remove the other C++ filer or copy to a backup folder. 
