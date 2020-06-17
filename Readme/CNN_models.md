@@ -16,5 +16,5 @@ To run the Alexnet and Resnet-50 using Systolic-CNN on a given FPGA, layer-wise 
 # Command to compile the host kernel
 1. The [Makefile](conv/conv/conv/Makefile) is used to generate the executable file at the bin location.
 2. To generate the executable file, use " make clean; make". This will generate the executable file specific to the target CNN model.
-## Note: 
+**Note**
 The [host kernel](conv/conv/conv/host/src) is specific to a given CNN model and is written in C++. We have provided examples for running the Alexnet and Resnet-50 models (conv_alexnet.cpp and conv_resnet.cpp). To avoid the conflict of generating multiple or wrong executable files, it is recommended to have only one C++ file inside the folder and to either remove the other C++ filer or copy to a backup folder. 
