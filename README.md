@@ -8,7 +8,7 @@ This paper presents Systolic-CNN, an OpenCLdefined scalable, run-time-flexible F
 Following steps are recommended for running the Systolic CNN on your available FPGA hardware.
 1. To generate the FPGA hardware, the [device kernel](conv/conv/conv/device/) need to be compiled using an OpenCL SDK. For example, we used [Intel FPGA SDK for OpenCL]. See the ["Command to compile the OpenCL code"](Readme/CNN_models.md#command-to-compile-the-device-kernel) section. This step is the most time-consuming step and might take 5-6 hours based on the architectural parameters defined by the user. 
 2. After the hardware generation of the device kernel, the [host kernel](conv/conv/conv/host/src) needs to be compiled to generate the executable for a host CPU. See the ["Command to compile the host code"](Readme/CNN_models.md#command-to-compile-the-host-kernel) section.
-3. [Parameter Readme](Readme/Parameter_Readme.md) can be used to understand the parameter definition used in both device and host code. 
+3. [Parameter Readme](Readme/Parameter_Readme.md) explains the parameter definition used in both device and host code. 
 4. To run Alexnet and Resnet-50, the pre-trained weights and parameter values for the Alexnet and Resnet-50 need to be downloaded. See the ["CNN Models Readme"](Readme/CNN_models.md) page.
 
 ## Testing FPGA Board
