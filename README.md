@@ -15,7 +15,7 @@ Following steps are recommended for running the Systolic CNN on your available F
 The experiments are conducted based on an Intel Arria 10 GX FPGA Development board that is equipped with an Intel 10AX115S2F45I1SG FPGA and 2GB DDR4 SDRAM with a maximum memory bandwidth of 19.2 GB/s. We have used Intel FPGA SDK for OpenCL version Pro 18.0 for device code compilation and deployment.
 
 ## Contributors
-- Akshay Dua (@AkshayDua)
+- Akshay Dua 
 
 
 
